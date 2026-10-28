@@ -65,9 +65,9 @@ public class Elevator extends SubsystemBase{
       .smartCurrentLimit(40)
       .follow(elevatorMotor1,true)
       
-      elevatorMotorController.configure(
-       elevatorConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters
-      )
+      elevatorMotor1.configure(elevatorConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+      elevatorMotor2.configure(followerConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+      
   }
 
   
