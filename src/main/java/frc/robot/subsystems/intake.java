@@ -28,6 +28,9 @@ private static final double METERS_PER_MOTOR_ROTATION = 2 * Math.PI / 20;
 private static final double MAX_POSTION = Math.PI/2; 
 
   public Intake() {
+    rollerMotor = new TalonFX(123);
+    pivotMotor = new TalonFX(124);
+
     TalonFXConfiguration rollerConfig = new TalonFXConfiguration(); 
     rollerConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
@@ -82,6 +85,18 @@ public void setPivotVoltage(double voltage){
     pivotMotor.setControl(pivotVoltageRequest.withOutput(MathUtil.clamp(voltage, -12.0, 12.0))); 
 }
 
+public void pivotStop(){
+    pivotMotor.stopMotor(); 
+}
+
+public void rollerStop(){
+    rollerMotor.stopMotor();
+}
+public void zeroEncoderPivot(){
+    stop();
+    pivotMotor.setPosition(0.0);
+    setpointHeight = 0.0; 
+}
 
 
 
